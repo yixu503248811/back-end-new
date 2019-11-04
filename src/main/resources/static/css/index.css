@@ -1,0 +1,31 @@
+tr {
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+tr > th {
+    border: 1px solid #ddd;
+    padding: 8px;
+    line-height: 1.42857143;
+    text-align: left;
+}
+.itemList {
+    margin-bottom: 0;
+    border: 1px solid #ddd;
+    background-color: transparent;
+    border-spacing: 0;
+    border-collapse: collapse;
+    margin-top: 50px;
+}
+tr > td {
+    padding: 8px;
+    line-height: 1.42857143;
+    vertical-align: top;
+    border: 1px solid #ddd;
+}
+.basic-select {
+    width: 100px;
+    height: 30px;
+    line-height: 30px;
+    border-radius: 2px;
+    cursor: pointer;
+}

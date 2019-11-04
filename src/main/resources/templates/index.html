@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link type="text/css" rel="styleSheet" href="/css/index.css" />
+</head>
+
+<body>
+
+    <div id="app">
+        <div class="basic-tab">
+            <span>city: </span>
+            <select class="basic-select" v-model="cityListModel" @change="changeCity">
+                <option v-for="item in cityList" :value="item">
+                    {{ item }}
+                </option>
+            </select>
+        </div>
+
+        <table class="itemList">
+            <thead>
+                <tr>
+                    <th class="item1">city</th>
+                    <th class="item2">time</th>
+                    <th class="item3">weather</th>
+                    <th class="item4">temperature</th>
+                    <th class="item5">wind</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="item1">{{ city }}</td>
+                    <td class="item1">{{ time }}</td>
+                    <td class="item1">{{ weather }}</td>
+                    <td class="item1">{{ temperature }}</td>
+                    <td class="item1">{{ wind }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+
+
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/axios/0.19.0/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        instance = axios.create({
+            baseURL: 'http://117.78.40.33:8981/',
+            // baseURL: 'http://localhost:8981/',
+            timeout: 3000,
+            withCredentials: true
+        });
+        var app = new Vue({
+            el: '#app',
+            data: {
+                city: '',
+                time: '',
+                weather: '',
+                temperature: '',
+                wind: '',
+                cityList: ['悉尼', '墨尔本', '布里斯班'],
+                cityListModel: '',
+                weatherList: ''
+            },
+            created: function () {
+                this.cityListModel = this.cityList[0]
+                this.getItems(this.cityListModel);
+            },
+            methods: {
+                getItems: function (city) {
+                    instance({
+                        method: 'get',
+                        url: 'weather/getWeather?city=' + city
+                    }).then(function (response) {
+                        var result = response.data.data;
+                        var weather = JSON.parse(result)
+                        app.city = weather.city
+                        app.time = weather.date
+                        app.weather = weather.wea
+                        app.temperature = weather.tem
+                        app.wind = weather.win + " " + weather.win_speed
+                    });
+                },
+                changeCity: function () {
+                    console.log(this.cityListModel)
+                    this.getItems(this.cityListModel)
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
