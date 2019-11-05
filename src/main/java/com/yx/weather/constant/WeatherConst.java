@@ -1,8 +1,8 @@
 package com.yx.weather.constant;
 
 /**
- *  类的功能描述：
- *  常量
+ *  details：
+ *  
  * @ClassName:  WeatherConst
  * @Author  yx
  * @Date 2019-10-31 01:14:23

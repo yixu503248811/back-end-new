@@ -5,7 +5,7 @@ import lombok.Setter;
 
 import java.io.Serializable;
 /**
- *  类的功能描述：
+ *  details：
  *
  * @ClassName:  BaseRes
  * @Author  yx

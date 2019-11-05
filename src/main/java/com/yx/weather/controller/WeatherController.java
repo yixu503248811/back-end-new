@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 
 /**
- * 类的功能描述：
+ * details：
  *
  * @ClassName: WeatherController
  * @Author yx
@@ -42,7 +42,7 @@ public class WeatherController {
     }
 
 
-    //Unicode转中文
+    //Unicode transform to chinese
     public static String decodeUnicode(final String unicode) {
         StringBuffer string = new StringBuffer();
 
@@ -51,17 +51,13 @@ public class WeatherController {
         for (int i = 0; i < hex.length; i++) {
 
             try {
-                // 汉字范围 \u4e00-\u9fa5 (中文)
-                if(hex[i].length()>=4){//取前四个，判断是否是汉字
+                if(hex[i].length()>=4){
                     String chinese = hex[i].substring(0, 4);
                     try {
                         int chr = Integer.parseInt(chinese, 16);
                         boolean isChinese = isChinese((char) chr);
-                        //转化成功，判断是否在  汉字范围内
-                        if (isChinese){//在汉字范围内
-                            // 追加成string
+                        if (isChinese){
                             string.append((char) chr);
-                            //并且追加  后面的字符
                             String behindString = hex[i].substring(4);
                             string.append(behindString);
                         }else {
@@ -83,7 +79,7 @@ public class WeatherController {
     }
 
     /**
-     * 判断是否为中文字符
+     * check if it is a chinese character
      *
      * @param c
      * @return

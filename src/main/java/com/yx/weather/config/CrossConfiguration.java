@@ -7,8 +7,8 @@ import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 /**
- *  类的功能描述：
- *  跨域相关
+ *  details：
+ *  
  * @ClassName:  CrossConfiguration
  * @Author  yx
  * @Date 2019-10-31 12:47:33
